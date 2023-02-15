@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <MASM Include="P_2_IntroOpArit.asm" />
+    <MASM Include="P_3_EscrituraEnPantalla_.asm" />
+    <MASM Include="P_4_LeerDatosConsola.asm" />
+    <MASM Include="P_5_ImprimeCadenaEnConsola.asm" />
+    <MASM Include="P_6_Op_SUB_.asm" />
+    <MASM Include="P_7_Multiplicacion_.asm" />
+    <MASM Include="P_8_Division_.asm" />
+    <MASM Include="P_9_EcuacionLineaRecta.asm" />
+    <MASM Include="P_10_Promedio5Numeros.asm" />
+    <MASM Include="P_11_AreaRectangulo_.asm" />
+    <MASM Include="P_12_IntroSaltosIncondicionales.asm" />
+    <MASM Include="P_13_SaltosCondicionales_V1.asm">
+      <Filter>SaltosCondicionales</Filter>
+    </MASM>
+    <MASM Include="P_14_NumeroPar_.asm" />
+    <MASM Include="P_15_imprimirSerie_.asm" />
+    <MASM Include="P_16_XalaY_.asm" />
+    <MASM Include="P_17_Checar2Num_.asm" />
+    <MASM Include="P_18_LeerHastaNegativos_.asm" />
+    <MASM Include="P_19_IntroPila_.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\..\..\..\..\Irvine\Examples\Lib32\Irvine32_Library\Irvine32.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="SaltosCondicionales">
+      <UniqueIdentifier>{d719cc98-210e-405e-b362-30414be0ff38}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
