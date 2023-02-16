@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/14/23 20:46:05
+Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/15/23 20:41:10
 	Trabajo 					     Page 1 - 1
 
 
@@ -30,47 +30,68 @@ Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/14/23 20:46:05
 			      C 
  00000000			.data
 				; Area de Declaracion de Variables
+ 00000000 20 78 20 00		msj1_22 db " x ",0
+ 00000004 20 3F 3D 20 00	msj2_22 db " ?= ",0
+ 00000009 51 75 65 20 74	msj3_22 db "Que tabla quieres vsualizar?:",0
+	   61 62 6C 61 20
+	   71 75 69 65 72
+	   65 73 20 76 73
+	   75 61 6C 69 7A
+	   61 72 3F 3A 00
+				
 				
  00000000			.code
- 00000000				main19 PROC
+ 00000000				main22 PROC
 						;logica apartir de aqui
 						
- 00000000  BB 00000002				mov ebx, 2  ;
- 00000005  B8 0000000F				mov eax, 15
+						;desplegar la tabla de multiplicar indicada por el usuario...
 				
- 0000000A  BA 0000000A				mov edx, 10  ; colocando en el registro edx el valor 10
-						; este su pudo obtener de diversas fomas o como reusltado de alguna operacion
+ 00000000  BA 00000009 R			mov edx, offset msj3_22  ; de qu tabla queires el examen...
+ 00000005  E8 00000000 E			call writestring
+ 0000000A  E8 00000000 E			call crlf
 				
-						; se requiere utilizar al registro edx, sin embargo, no se quiere perder su valor
-						;entonces, se recurre a la pila para almacenar temporalmente el valor del registro
+ 0000000F  E8 00000000 E			call readint  ; la tabla que se quiere visualizar
+ 00000014  BB 00000001				mov ebx, 1 ;contador de la tabla
 				
- 0000000F  52					push edx ; almacenar el valor de edx en la pila
+ 00000019					ciclo: 
 				
- 00000010  BA 00000000				mov edx, 0 ; cambia el valor de edx, y pone en este el nuevo valor
- 00000015  F7 F3				div ebx 
+ 00000019  E8 00000000 E				call writedec ; imprime la tabla
 				
- 00000017  8B C2				mov eax, edx  ; se coloca en eax el valor de edx para poder imprimir imprimirlo en consola
+ 0000001E  BA 00000000 R				mov edx, offset msj1_22
+ 00000023  E8 00000000 E				call writestring    ; X
 				
- 00000019  E8 00000000 E			call writedec
- 0000001E  E8 00000000 E			call crlf
+ 00000028  93						xchg eax, ebx
+ 00000029  E8 00000000 E				call writedec
 				
- 00000023  58					pop eax ; recupera el ultimo valor que se guardo en la pila, 
-						;en este caso, el valor de edx al comienzo del programa
+ 0000002E  BA 00000004 R				mov edx, offset msj2_22
+ 00000033  E8 00000000 E				call writestring
+						
+							; hasta aqui en eax esta el contador y ebx el valor de la tabla
+							; si se hace una multiplicacion se va a perder el contador...
+							; necesitamos evitarlo ... como ? 
 				
- 00000024  E8 00000000 E			call writedec
- 00000029  E8 00000000 E			call crlf
+ 00000038  50						push eax  ; respaldo del valor del contador... 
 				
-						;chechar que tiene la pila ahora...
- 0000002E  B8 00000002				mov eax, 2
- 00000033  58					pop eax
- 00000034  E8 00000000 E			call writedec
- 00000039  E8 00000000 E			call crlf
+ 00000039  F7 E3					mul ebx  ; eax =  eax * ebx = contador * tabla
+				
+ 0000003B  E8 00000000 E				call writedec ; imprime el resultado de la multiplicacion
+				
+ 00000040  58						pop eax  ;recupera el valor de la tabla en eax			
+				
+ 00000041  40						inc eax
+ 00000042  93						xchg eax, ebx
+				
+ 00000043  E8 00000000 E				call crlf
+				
+ 00000048  83 FB 0A					cmp ebx, 10
+ 0000004B  7E CC					jle ciclo
+				
 				
 				
 						exit	
- 00000045				main19 ENDP
-					END main19
-Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/14/23 20:46:05
+ 00000054				main22 ENDP
+					END main22
+Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/15/23 20:41:10
 	Trabajo 					     Symbols 2 - 1
 
 
@@ -164,8 +185,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000045 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000027 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000054 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -272,7 +293,8 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main19 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000045 Public STDCALL
+main22 . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000054 Public STDCALL
+  ciclo  . . . . . . . . . . . .	L Near	 00000019 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -505,6 +527,9 @@ lightGreen . . . . . . . . . . .	Number	 0000000Ah
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
+msj1_22  . . . . . . . . . . . .	Byte	 00000000 _DATA	
+msj2_22  . . . . . . . . . . . .	Byte	 00000004 _DATA	
+msj3_22  . . . . . . . . . . . .	Byte	 00000009 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA

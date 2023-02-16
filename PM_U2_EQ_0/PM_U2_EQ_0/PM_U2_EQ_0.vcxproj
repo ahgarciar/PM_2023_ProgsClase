@@ -37,6 +37,9 @@
     <MASM Include="P_17_Checar2Num_.asm" />
     <MASM Include="P_18_LeerHastaNegativos_.asm" />
     <MASM Include="P_19_IntroPila_.asm" />
+    <MASM Include="P_20_CiclosAnidados1_.asm" />
+    <MASM Include="P_21_TablaMultiplicar.asm" />
+    <MASM Include="P_22_TablaMultiplica_ConPila.asm" />
     <MASM Include="P_2_IntroOpArit.asm">
       <FileType>Document</FileType>
     </MASM>
@@ -49,7 +52,7 @@
     <MASM Include="P_9_EcuacionLineaRecta.asm" />
   </ItemGroup>
   <ItemGroup>
-    <Object Include="..\..\..\..\..\Irvine\Examples\Lib32\Irvine32_Library\Irvine32.obj" />
+    <Object Include="..\..\..\..\..\..\..\Irvine\Examples\Lib32\Irvine32_Library\Irvine32.obj" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -133,7 +136,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main19</EntryPointSymbol>
+      <EntryPointSymbol>main22</EntryPointSymbol>
       <ImportLibrary>c:/Irvine</ImportLibrary>
     </Link>
     <MASM>

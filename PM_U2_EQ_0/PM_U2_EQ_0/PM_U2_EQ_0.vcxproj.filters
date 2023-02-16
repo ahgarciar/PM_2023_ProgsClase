@@ -21,13 +21,16 @@
     <MASM Include="P_17_Checar2Num_.asm" />
     <MASM Include="P_18_LeerHastaNegativos_.asm" />
     <MASM Include="P_19_IntroPila_.asm" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="..\..\..\..\..\Irvine\Examples\Lib32\Irvine32_Library\Irvine32.obj" />
+    <MASM Include="P_20_CiclosAnidados1_.asm" />
+    <MASM Include="P_21_TablaMultiplicar.asm" />
+    <MASM Include="P_22_TablaMultiplica_ConPila.asm" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SaltosCondicionales">
       <UniqueIdentifier>{d719cc98-210e-405e-b362-30414be0ff38}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\..\..\..\..\..\..\Irvine\Examples\Lib32\Irvine32_Library\Irvine32.obj" />
   </ItemGroup>
 </Project>
