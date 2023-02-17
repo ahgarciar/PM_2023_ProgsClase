@@ -24,6 +24,8 @@
     <MASM Include="P_20_CiclosAnidados1_.asm" />
     <MASM Include="P_21_TablaMultiplicar.asm" />
     <MASM Include="P_22_TablaMultiplica_ConPila.asm" />
+    <MASM Include="Ej_3_LeerNumeroPositivos.asm" />
+    <MASM Include="Ejercicio_4_sumhastaneg.asm" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SaltosCondicionales">

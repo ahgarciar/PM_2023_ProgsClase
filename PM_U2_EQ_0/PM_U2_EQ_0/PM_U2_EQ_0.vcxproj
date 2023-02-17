@@ -27,6 +27,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <MASM Include="Ejercicio_4_sumhastaneg.asm" />
+    <MASM Include="Ej_3_LeerNumeroPositivos.asm" />
     <MASM Include="P_10_Promedio5Numeros.asm" />
     <MASM Include="P_11_AreaRectangulo_.asm" />
     <MASM Include="P_12_IntroSaltosIncondicionales.asm" />
@@ -136,7 +138,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main22</EntryPointSymbol>
+      <EntryPointSymbol>mainEj4</EntryPointSymbol>
       <ImportLibrary>c:/Irvine</ImportLibrary>
     </Link>
     <MASM>
