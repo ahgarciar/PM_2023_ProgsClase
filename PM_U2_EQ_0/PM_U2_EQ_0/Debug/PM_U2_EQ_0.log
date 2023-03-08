@@ -1,2 +1,26 @@
 ﻿  Assembling Ejercicio_4_sumhastaneg.asm...
+LINK : warning LNK4076: invalid incremental status file 'Debug\PM_U2_EQ_0.ilk' (which will be deleted); linking nonincrementally
+Ejercicio_4_sumhastaneg.obj : warning LNK4258: directive '/ENTRY:mainEj4@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+Ej_3_LeerNumeroPositivos.obj : warning LNK4258: directive '/ENTRY:mainE3@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_10_Promedio5Numeros.obj : warning LNK4258: directive '/ENTRY:main10@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_11_AreaRectangulo_.obj : warning LNK4258: directive '/ENTRY:main11@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_12_IntroSaltosIncondicionales.obj : warning LNK4258: directive '/ENTRY:main12@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_13_SaltosCondicionales_V1.obj : warning LNK4258: directive '/ENTRY:main13@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_14_NumeroPar_.obj : warning LNK4258: directive '/ENTRY:main14@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_15_imprimirSerie_.obj : warning LNK4258: directive '/ENTRY:main15@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_16_XalaY_.obj : warning LNK4258: directive '/ENTRY:main16@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_17_Checar2Num_.obj : warning LNK4258: directive '/ENTRY:main17@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_18_LeerHastaNegativos_.obj : warning LNK4258: directive '/ENTRY:main18@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_19_IntroPila_.obj : warning LNK4258: directive '/ENTRY:main19@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_20_CiclosAnidados1_.obj : warning LNK4258: directive '/ENTRY:main20@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_21_TablaMultiplicar.obj : warning LNK4258: directive '/ENTRY:main21@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_22_TablaMultiplica_ConPila.obj : warning LNK4258: directive '/ENTRY:main22@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_2_IntroOpArit.obj : warning LNK4258: directive '/ENTRY:main2@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_3_EscrituraEnPantalla_.obj : warning LNK4258: directive '/ENTRY:main3@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_4_LeerDatosConsola.obj : warning LNK4258: directive '/ENTRY:main4@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_5_ImprimeCadenaEnConsola.obj : warning LNK4258: directive '/ENTRY:main5@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_6_Op_SUB_.obj : warning LNK4258: directive '/ENTRY:main6@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_7_Multiplicacion_.obj : warning LNK4258: directive '/ENTRY:main7@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_8_Division_.obj : warning LNK4258: directive '/ENTRY:main8@0' not compatible with switch '/ENTRY:mainEj4'; ignored
+P_9_EcuacionLineaRecta.obj : warning LNK4258: directive '/ENTRY:main9@0' not compatible with switch '/ENTRY:mainEj4'; ignored
   PM_U2_EQ_0.vcxproj -> C:\Users\AlejandroGarcia\Desktop\ClasePM_2023_1\PM_2023_ProgsClase\PM_U2_EQ_0\Debug\PM_U2_EQ_0.exe

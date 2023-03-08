@@ -1,0 +1,3 @@
+﻿  Assembling P0_Primera.asm...
+P0_Primera.obj : warning LNK4258: directive '/ENTRY:main@0' not compatible with switch '/ENTRY:main'; ignored
+  PM_U3_EQ_0.vcxproj -> C:\Users\AlejandroGarcia\Desktop\ClasePM_2023_1\PM_2023_ProgsClase\PM_U3_EQ_0\Debug\PM_U3_EQ_0.exe

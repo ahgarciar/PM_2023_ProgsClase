@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/16/23 20:50:29
+Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/21/23 20:12:23
 	Trabajo 					     Page 1 - 1
 
 
@@ -54,6 +54,7 @@ Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/16/23 20:50:29
  00000014  E8 00000000 E				call readint ; eax 
 				
  00000019  03 D8					add ebx,eax
+				
  0000001B  83 F8 00					cmp eax, 0
  0000001E  7D E5					jge ciclo
 				
@@ -66,7 +67,7 @@ Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/16/23 20:50:29
 						exit	
  00000030				mainEj4 ENDP
 					END mainEj4
-Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/16/23 20:50:29
+Microsoft (R) Macro Assembler Version 14.34.31933.0	    02/21/23 20:12:23
 	Trabajo 					     Symbols 2 - 1
 
 
