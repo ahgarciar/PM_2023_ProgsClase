@@ -2,6 +2,21 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <MASM Include="P0_Primera.asm" />
+    <MASM Include="P_1_delay_.asm" />
+    <MASM Include="P_17_EsPar_.asm" />
+    <MASM Include="P_2_clrscr_.asm" />
+    <MASM Include="P_3_waitmsg_.asm" />
+    <MASM Include="P_4_RandomNumber_.asm" />
+    <MASM Include="P_5_EjemploAleatorios_.asm" />
+    <MASM Include="P_6_MensajeEmergente_.asm" />
+    <MASM Include="P_7_AskEmergente_.asm" />
+    <MASM Include="P_8_Examen_Sumas_.asm" />
+    <MASM Include="P_11_IntroMacros.asm" />
+    <MASM Include="P_12_SumaNumerosMacro_.asm" />
+    <MASM Include="P_13_XalaY_V1_.asm" />
+    <MASM Include="P_14_XalaY_V2_.asm" />
+    <MASM Include="P_15_XalaY_V3_.asm" />
+    <MASM Include="p_16_SumasSecuenciales_.asm" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\..\..\..\..\..\Irvine\Examples\Lib32\Irvine32_Library\Irvine32.obj" />

@@ -1,15 +1,20 @@
-Microsoft (R) Macro Assembler Version 14.34.31933.0	    03/08/23 16:12:17
-	Trabajo 					     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.34.31933.0	    03/08/23 16:39:51
+EXAMEN SUMA						     Page 1 - 1
 
 
-				TITLE Trabajo 1
-				;DESCRPICION 
-				;Objetivo: Primera ejecucion de masm
+				TITLE  EXAMEN SUMAS
+
+				;DESCRPICIÓN 
+				;Objetivo: Archivo de Ejemplo
 				;
 				; Autore(s):
-				;         Garcia Ruiz Alejandro H.
+				;         Mtro. Alejandro Garcia
+				;		  Su Nombre.! 
+				;         
+
 				; Semestre: 8vo Semestre ISC 
-				;FIN DESCRPICION
+				;FIN DESCRIPCIÓN
+
 				INCLUDE Irvine32.inc  
 			      C ; Include file for Irvine32.lib             (Irvine32.inc)
 			      C 
@@ -28,58 +33,134 @@ Microsoft (R) Macro Assembler Version 14.34.31933.0	    03/08/23 16:12:17
 			      C .NOLIST
 			      C .LIST
 			      C 
-				INCLUDE Macros.inc
-			      C ImprimeCadenaLn MACRO cadena
-			      C 	LOCAL cad
-			      C 	.data
-			      C 		cad db cadena, 0
-			      C 	.code
-			      C 		push edx
-			      C 		mov edx, offset cad
-			      C 		call writestring
-			      C 		call crlf
-			      C 		pop edx
-			      C ENDM
-			      C 
-			      C ImprimeCadena MACRO cadena
-			      C 	LOCAL cad
-			      C 	.data
-			      C 		cad db cadena, 0
-			      C 	.code
-			      C 		push edx
-			      C 		mov edx, offset cad
-			      C 		call writestring
-			      C 		pop edx
-			      C ENDM
-			      C 
-			      C 
-				
+
  00000000			.data
-				; Area de Declaracion de Variables
-				
-				
-				
+				; Área de Declaración de Variables
+ 00000000 BF 43 75 61 6E	msj1_8 db "¿Cuantas sumas deseas realizar?",0
+	   74 61 73 20 73
+	   75 6D 61 73 20
+	   64 65 73 65 61
+	   73 20 72 65 61
+	   6C 69 7A 61 72
+	   3F 00
+ 00000020 20 2B 20 00		msj2_8 db " + ", 0
+ 00000024 20 3D 20 00		msj3_8 db " = ", 0
+ 00000028 4E 75 6D 65 72	msj4_8 db "Numero de Aciertos:", 0
+	   6F 20 64 65 20
+	   41 63 69 65 72
+	   74 6F 73 3A 00
+ 0000003C 54 6F 74 61 6C	msj5_8 db "Total de Sumas Aplicadas:", 0
+	   20 64 65 20 53
+	   75 6D 61 73 20
+	   41 70 6C 69 63
+	   61 64 61 73 3A
+	   00
+ 00000056 52 65 73 70 75	msj6_8 db "Respuesta Correcta: ", 0
+	   65 73 74 61 20
+	   43 6F 72 72 65
+	   63 74 61 3A 20
+	   00
+
+ 0000006B 00000000		aciertos dword 0
+ 0000006F 00000000		total_sumas dword ?
+
+				;Mostrar errores
+
+				; mostrar mensajes con base en "porcentajes"/"calif"
+
  00000000			.code
- 00000000				main PROC
-						;Logica del Programa
+
+ 00000000				main8 PROC	
+ 00000000  E8 00000000 E			call randomize ; establecemos la semilla para los nums aleatorios
+
+ 00000005  BA 00000000 R			mov edx, offset msj1_8  ; cuantas sumas deseas realzar? 
+ 0000000A  E8 00000000 E			call writeString
+ 0000000F  E8 00000000 E			call crlf
+
+ 00000014  E8 00000000 E			call readint ; eax  
+ 00000019  E8 00000000 E			call crlf
 						
-						
-				
+ 0000001E  A3 0000006F R			mov total_sumas, eax
+
+ 00000023  8B C8				mov ecx, eax    
+
+ 00000025					ciclo:
+ 00000025  B8 00000065					mov eax, 101   ; n
+ 0000002A  E8 00000000 E				call randomrange  ; [0 n-1]
+
+ 0000002F  E8 00000000 E				call writedec   ; "num"
+
+ 00000034  BA 00000020 R				mov edx, offset msj2_8   ;  +
+ 00000039  E8 00000000 E				call writestring
+
+ 0000003E  8B D8					mov ebx, eax ; respaldamos primer valor aleatorio obtenido
+
+ 00000040  B8 00000065					mov eax, 101   ; n
+ 00000045  E8 00000000 E				call randomrange  ; [0 n-1]
+
+ 0000004A  E8 00000000 E				call writedec   ; "num"
+
+ 0000004F  BA 00000024 R				mov edx, offset msj3_8   ;  =
+ 00000054  E8 00000000 E				call writestring
+
+							; num2 = eax   num1 = ebx  
+ 00000059  03 D8					add ebx, eax   ; ebx =  resultado de la suma
+
+ 0000005B  E8 00000000 E				call readint   ; eax
+
+ 00000060  3B C3					cmp eax, ebx
+
+ 00000062  75 08					jne mostrarCorrecta   ; cuando no sea igual , entonces saltara
+								; cuando sea correcta
+
+ 00000064  FF 05 0000006B R					inc aciertos ; incremento el numero de aciertos
+ 0000006A  EB 1B						jmp continuar
+									
+ 0000006C					mostrarCorrecta:
+					
+ 0000006C  BA 00000056 R				mov edx, offset msj6_8 
+ 00000071  E8 00000000 E				call writestring
+
+ 00000076  8B C3					mov eax, ebx  
+ 00000078  E8 00000000 E				call writedec
+
+ 0000007D  E8 00000000 E				call crlf
+
+ 00000082  E8 00000000 E				call waitmsg
+
+ 00000087					continuar: 
+
+ 00000087  E8 00000000 E			call crlf
+
+ 0000008C  E2 97				loop ciclo
+
+ 0000008E  E8 00000000 E				call crlf
+ 00000093  E8 00000000 E				call crlf
+
+ 00000098  BA 00000028 R				mov edx, offset msj4_8 
+ 0000009D  E8 00000000 E				call writestring
+
+ 000000A2  A1 0000006B R				mov eax, aciertos
+ 000000A7  E8 00000000 E				call writedec
+
+ 000000AC  E8 00000000 E				call crlf
+
+ 000000B1  BA 0000003C R				mov edx, offset msj5_8
+ 000000B6  E8 00000000 E				call writestring
+
+ 000000BB  A1 0000006F R				mov eax, total_sumas
+ 000000C0  E8 00000000 E				call writedec
+
+
 						exit	
- 00000007				main ENDP
-					END main
-Microsoft (R) Macro Assembler Version 14.34.31933.0	    03/08/23 16:12:17
-	Trabajo 					     Symbols 2 - 1
+					
+ 000000CC				main8 ENDP
+					
+					END main8
+Microsoft (R) Macro Assembler Version 14.34.31933.0	    03/08/23 16:39:51
+EXAMEN SUMA						     Symbols 2 - 1
 
 
-
-
-Macros:
-
-                N a m e                 Type
-
-ImprimeCadenaLn  . . . . . . . .	Proc
-ImprimeCadena  . . . . . . . . .	Proc
 
 
 Structures and Unions:
@@ -170,8 +251,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000007 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000073 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 000000CC Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -278,7 +359,10 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000007 Public STDCALL
+main8  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 000000CC Public STDCALL
+  ciclo  . . . . . . . . . . . .	L Near	 00000025 _TEXT	
+  mostrarCorrecta  . . . . . . .	L Near	 0000006C _TEXT	
+  continuar  . . . . . . . . . .	L Near	 00000087 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -497,6 +581,7 @@ VK_UP  . . . . . . . . . . . . .	Number	 00000026h
 WINDOW_BUFFER_SIZE_EVENT . . . .	Number	 00000004h   
 WriteConsoleOutputCharacter  . .	Text   	 WriteConsoleOutputCharacterA
 WriteConsole . . . . . . . . . .	Text   	 WriteConsoleA
+aciertos . . . . . . . . . . . .	DWord	 0000006B _DATA	
 black  . . . . . . . . . . . . .	Number	 00000000h   
 blue . . . . . . . . . . . . . .	Number	 00000001h   
 brown  . . . . . . . . . . . . .	Number	 00000006h   
@@ -511,7 +596,14 @@ lightGreen . . . . . . . . . . .	Number	 0000000Ah
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
+msj1_8 . . . . . . . . . . . . .	Byte	 00000000 _DATA	
+msj2_8 . . . . . . . . . . . . .	Byte	 00000020 _DATA	
+msj3_8 . . . . . . . . . . . . .	Byte	 00000024 _DATA	
+msj4_8 . . . . . . . . . . . . .	Byte	 00000028 _DATA	
+msj5_8 . . . . . . . . . . . . .	Byte	 0000003C _DATA	
+msj6_8 . . . . . . . . . . . . .	Byte	 00000056 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
+total_sumas  . . . . . . . . . .	DWord	 0000006F _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   
